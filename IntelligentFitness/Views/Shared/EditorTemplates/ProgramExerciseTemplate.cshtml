@@ -1,0 +1,17 @@
+﻿@model IntelligentFitness.Models.ProgramExerciseTemplate
+@using IntelligentFitness.Models
+
+@Html.HiddenFor(x => x.ID)
+<div class="exercise">
+    <p>
+Exercise
+    @Html.LabelFor(x => x.SeqNumber)
+    @Html.TextBoxFor(x => x.SeqNumber)
+    @Html.LabelFor(x => x.Repetition)
+    @Html.TextBoxFor(x => x.Repetition)
+    @Html.LabelFor(x => x.WeekNumber)
+    @Html.TextBoxFor(x => x.WeekNumber)
+    @Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
+    @Html.RemoveLink("Remove", "div.exercise", "input.mark-for-delete")
+    </p>
+</div>

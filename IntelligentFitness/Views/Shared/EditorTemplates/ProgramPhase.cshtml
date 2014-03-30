@@ -1,0 +1,15 @@
+﻿@model IntelligentFitness.Models.ProgramPhase
+@using IntelligentFitness.Models
+
+@Html.HiddenFor(x => x.ID)
+<div class="phase">Phase
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name)
+    <div id="exercises">
+        @Html.LabelFor(x => x.ProgramExerciseTemplates)
+        @Html.EditorFor(x => x.ProgramExerciseTemplates)
+    </div>
+    @Html.AddLink("Add exercise", "#exercises", ".exercise", "Exercises", typeof(ProgramExerciseTemplate))
+
+    Create a new exercise
+</div>
