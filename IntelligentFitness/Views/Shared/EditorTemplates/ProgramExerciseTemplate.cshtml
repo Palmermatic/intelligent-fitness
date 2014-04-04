@@ -1,17 +1,20 @@
 ﻿@model IntelligentFitness.Models.ProgramExerciseTemplate
 @using IntelligentFitness.Models
 
-@Html.HiddenFor(x => x.ID)
+@{
+    var AllExercises = (IEnumerable<SelectListItem>)ViewData["AllExercises"];
+}
+
 <div class="exercise">
-    <p>
-Exercise
-    @Html.LabelFor(x => x.SeqNumber)
-    @Html.TextBoxFor(x => x.SeqNumber)
-    @Html.LabelFor(x => x.Repetition)
-    @Html.TextBoxFor(x => x.Repetition)
-    @Html.LabelFor(x => x.WeekNumber)
-    @Html.TextBoxFor(x => x.WeekNumber)
-    @Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
-    @Html.RemoveLink("Remove", "div.exercise", "input.mark-for-delete")
-    </p>
+@Html.HiddenFor(x => x.ID)
+@Html.DropDownListFor(x => x.ExerciseID, new SelectList(AllExercises,"Value","Text"))
+@Html.LabelFor(x => x.SeqNumber)
+@Html.TextBoxFor(x => x.SeqNumber)
+@Html.LabelFor(x => x.Repetition)
+@Html.TextBoxFor(x => x.Repetition)
+@Html.LabelFor(x => x.WeekNumber)
+@Html.TextBoxFor(x => x.WeekNumber)
+@Html.HiddenFor(x => x.Insert, new { @class = "mark-for-insert" })
+@Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
+@Html.LinkToRemoveNestedForm("Remove", ".exercise", "input.mark-for-delete")
 </div>

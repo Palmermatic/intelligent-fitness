@@ -1,15 +1,23 @@
 ﻿@model IntelligentFitness.Models.ProgramPhase
 @using IntelligentFitness.Models
 
-@Html.HiddenFor(x => x.ID)
-<div class="phase">Phase
+@{
+    var AllExercises = (IEnumerable<SelectListItem>)ViewData["AllExercises"];
+}
+
+<div class="phase">
+    @Html.HiddenFor(x => x.ID)
     @Html.LabelFor(x => x.Name)
     @Html.TextBoxFor(x => x.Name)
-    <div id="exercises">
+    <div class="exercises">
         @Html.LabelFor(x => x.ProgramExerciseTemplates)
-        @Html.EditorFor(x => x.ProgramExerciseTemplates)
+        @Html.EditorFor(x => x.ProgramExerciseTemplates, new { List = AllExercises } )
     </div>
-    @Html.AddLink("Add exercise", "#exercises", ".exercise", "Exercises", typeof(ProgramExerciseTemplate))
-
-    Create a new exercise
+    <div>
+        @Html.LinkToAddNestedForm(model => model.ProgramExerciseTemplates, "Add Exercise", ".exercises", ".exercise")
+    </div>
+    @Html.HiddenFor(x => x.Insert, new { @class = "mark-for-insert" })
+    @Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
+    @Html.LinkToRemoveNestedForm("Delete Phase", ".phases", ".phase")
 </div>
+

@@ -1,0 +1,25 @@
+﻿@model IntelligentFitness.Models.ViewModels.GroupViewModel
+@using IntelligentFitness.Models
+@{ViewBag.Title = "Edit Group";}
+<script src="~/Scripts/CustomJs.js"></script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>Edit Group</h2>
+    <div class="exercises">
+        @Html.EditorFor(modelItem => Model.Exercises)
+    </div>
+    <div>
+        @Html.LinkToAddNestedForm(model => model.Exercises, "Add new exercise", ".exercises", ".exercise")
+    </div>
+    
+    @Html.HiddenFor(x => x.SelectedGroupID)
+
+    <div class="form-group">
+        @Html.ActionLink("Back to List", "Index")
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}

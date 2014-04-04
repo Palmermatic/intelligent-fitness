@@ -1,0 +1,11 @@
+﻿@model IntelligentFitness.Models.Exercise
+@using IntelligentFitness.Models
+
+<div class="exercise">
+@Html.HiddenFor(x => x.ID)
+@Html.LabelFor(x => x.Name)
+@Html.TextBoxFor(x => x.Name)
+@Html.HiddenFor(x => x.Insert, new { @class = "mark-for-insert" })
+@Html.HiddenFor(x => x.Delete, new { @class = "mark-for-delete" })
+@Html.LinkToRemoveNestedForm("Delete Exercise", "div.exercise", "input.mark-for-delete")
+</div>
